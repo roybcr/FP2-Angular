@@ -1,4 +1,5 @@
-export const searchEP = 'http://localhost:4040/search';
-export const todosEP = 'http://localhost:4040/todos';
-export const postsEP = 'http://localhost:4040/posts';
-export const usersEP = 'http://localhost:4040/users';
+const baseUrl = 'http://localhost:4040/';
+export const searchEP = baseUrl + 'search';
+export const todosEP = baseUrl + 'todos';
+export const postsEP = baseUrl + 'posts';
+export const usersEP = baseUrl + 'users';

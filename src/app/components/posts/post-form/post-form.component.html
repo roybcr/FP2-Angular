@@ -1,0 +1,13 @@
+<form [formGroup]="postFields" (ngSubmit)="createPost()">
+  <div style="display: flex">
+    <div style="display: flex; flex-direction: column">
+      <label for="title">Title: </label>
+      <input id="title" type="text" formControlName="title" required />
+
+      <label for="body">Body: </label>
+      <textarea id="body" formControlName="body"></textarea>
+
+      <button type="submit" class="s">Create</button>
+    </div>
+  </div>
+</form>

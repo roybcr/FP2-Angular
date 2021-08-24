@@ -21,8 +21,10 @@ export class UserBlockComponent implements OnInit {
     street: [''],
     zipcode: [''],
   });
-  expanded: boolean = false;
+  shouldShowOtherData: boolean = false;
   isEditing: boolean = false;
+  @Output()
+  onDeleteUser: EventEmitter<number> = new EventEmitter();
 
   constructor(
     private userService: UserService,
@@ -34,12 +36,34 @@ export class UserBlockComponent implements OnInit {
   }
 
   updateUser() {
+    console.log(this.userFields.value);
+    return this.user?.id
+      ? this.userService
+          .updateUser(this.user.id, this.userFields.value)
+          .subscribe(
+            (x) => {
+              this.userFields.patchValue({ ...x });
+              alert('User Updated Successfully!');
+            },
+            (error) => alert(error.error.message[0] as BadRequestErrorType)
+          )
+      : null;
+  }
+
+  deleteUser() {
     if (this.user) {
-      const modifiedUser = { ...this.user, ...this.userFields.value };
-      this.sub = this.userService
-        .updateUser(this.user.id, modifiedUser)
-        .subscribe((result) => Object.assign(this.user, result));
+      const id = this.user.id;
+      const index = this.idx;
+      this.sub = this.userService.deleteUser(id).subscribe((result) => {
+        if (result) {
+          this.onDeleteUser.emit(index);
+        }
+      });
     }
+  }
+
+  toggleOtherData() {
+    this.shouldShowOtherData = !this.shouldShowOtherData;
   }
 
   fillForm(values?: Partial<IUser>): void {

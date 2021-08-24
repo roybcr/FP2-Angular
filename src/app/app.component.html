@@ -1,31 +1,87 @@
 <div class="content-wrapper">
   <aside class="sidebar">
+    <!-- Search bar -->
     <div class="search-container">
       <input
         type="text"
-        placeholder=""
+        placeholder="Search"
         class="search"
-        style="
-          font-size: 16px;
-          width: 100%;
-          font-weight: 500;
-          height: 44px;
-          border: none;
-        "
         #txt
+        (keyup)="searchForUsers(txt.value)"
       />
+      <Button class="adduserbtn" (click)="toggleUserForm()">Add User</Button>
     </div>
+    <!-- Search bar END -->
 
+    <!-- User List -->
     <app-user-block
       *ngFor="let user of users; index as i"
       [user]="user"
       [idx]="i"
       [isActive]="selected === i"
       (onSelectUser)="onSelectedUser($event)"
+      (onDeleteUser)="onDeleteUser($event)"
     ></app-user-block>
+    <!-- User List END-->
   </aside>
 
-  <main class="content_area">dsds</main>
-</div>
+  <main class="content_area" *ngIf="!isCreatingUser">
+    <!-- Todos area -->
+    <div class="todos" style="display: flexbox" *ngIf="selected !== -1">
+      <div class="action-bar">
+        <h3>My Todos</h3>
+        <button type="button" class="" (click)="toggleTodoForm()">
+          {{ isAddingTodo ? "Cancel" : "New Todo" }}
+        </button>
+      </div>
+      <div *ngIf="isAddingTodo">
+        <app-todo-form
+          (createTodoEvent)="onCreateTodo($event)"
+          [userId]="users[selected].id"
+        ></app-todo-form>
+      </div>
+      <div *ngIf="!isAddingTodo">
+        <app-todo-item
+          *ngFor="let todo of users[selected]?.todos"
+          [completed]="todo.completed"
+          [title]="todo.title"
+          (updateUserBorder)="shouldUpdateUserBorder()"
+          [id]="todo.id"
+        ></app-todo-item>
+      </div>
+    </div>
+    <!-- Todos area END-->
 
-<router-outlet></router-outlet>
+    <!-- Posts Area -->
+    <div class="posts" style="display: flexbox" *ngIf="selected !== -1">
+      <div class="action-bar">
+        <h3>My Posts</h3>
+        <button type="button" class="" (click)="togglePostForm()">
+          {{ isCreatingPost ? "Cancel" : "New Post" }}
+        </button>
+      </div>
+      <div *ngIf="isCreatingPost">
+        <app-post-form
+          [userId]="users[selected].id"
+          (createPostEvent)="onCreatePost($event)"
+        ></app-post-form>
+      </div>
+      <div *ngIf="!isCreatingPost">
+        <app-post-item
+          *ngFor="let post of users[selected]?.posts"
+          [body]="post.body"
+          [title]="post.title"
+          [id]="post.id"
+        ></app-post-item>
+      </div>
+    </div>
+
+    <!-- Posts Area END-->
+  </main>
+
+  <!-- Add User Area -->
+  <main *ngIf="isCreatingUser">
+    <app-user-form></app-user-form>
+  </main>
+  <!-- Add User Area END-->
+</div>

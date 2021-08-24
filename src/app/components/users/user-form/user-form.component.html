@@ -1,0 +1,13 @@
+<form [formGroup]="userForm" (ngSubmit)="createUser()">
+  <div style="display: flex">
+    <div style="display: flex; flex-direction: column">
+      <label for="name">Name: </label>
+      <input id="name" type="text" formControlName="name" required />
+
+      <label for="email">Email: </label>
+      <input id="email" formControlName="email" type="email" required />
+
+      <button type="submit" class="s">Create</button>
+    </div>
+  </div>
+</form>

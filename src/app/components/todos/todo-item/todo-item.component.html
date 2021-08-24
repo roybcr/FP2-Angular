@@ -1,0 +1,14 @@
+<div style="display: flex; max-width: max-content" (click)="onUpdateTodo()">
+  <input type="checkbox" name="title" class="label__input" />
+
+  <div class="tickbox" style="border: none; cursor: pointer">
+    <div
+      class="todo_ticker tickbox"
+      style="margin: auto"
+      [style.background-color]="completed ? '#ffda9b' : 'transparent'"
+    ></div>
+  </div>
+  <label class="label" style="font-size: 16px; font-weight: 500" for="title">
+    {{ title }}
+  </label>
+</div>

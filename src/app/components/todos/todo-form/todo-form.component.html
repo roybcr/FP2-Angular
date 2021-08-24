@@ -1,0 +1,10 @@
+<form [formGroup]="todoFields" (ngSubmit)="createTodo()">
+  <div style="display: flex">
+    <div style="display: flex; flex-direction: column">
+      <label for="title">Title: </label>
+      <input id="title" type="text" formControlName="title" required />
+
+      <button type="submit" class="s">Add</button>
+    </div>
+  </div>
+</form>

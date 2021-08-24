@@ -4,7 +4,7 @@
 
 .card {
   flex-shrink: 0;
-  height: 180px;
+  height: 240px;
   width: 100%;
   flex: 1;
   display: flex;

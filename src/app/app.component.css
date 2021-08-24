@@ -58,4 +58,45 @@ input:focus {
   background: url(/assets/search.svg) no-repeat scroll 12px 12px;
   padding-left: 44px;
   color: #cbd1db;
+  font-size: 16px;
+  width: 90%;
+  font-weight: 500;
+  height: 44px;
+  border: none;
+}
+
+.action-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+button {
+  width: 96px;
+  height: 32px;
+  background: #fff;
+  color: #1c1c1e;
+  border-radius: 3px;
+  border: 3px solid #1c1c1e;
+  margin-top: 12px;
+  font-weight: 600;
+}
+
+.s {
+  width: 96px;
+  height: 32px;
+  background: #fff;
+  color: #1c1c1e;
+  border-radius: 3px;
+  border: 3px solid #1c1c1e;
+  margin-top: 12px;
+}
+
+.adduserbtn {
+  height: 44px;
+  margin: 0;
+  border: 1px solid #1c1c1e;
+  border-radius: 0px;
 }

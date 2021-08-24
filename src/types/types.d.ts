@@ -16,7 +16,7 @@ interface IUser {
   readonly email: string;
   readonly city?: string;
   readonly street?: string;
-  readonly zipcode?: number;
+  readonly zipcode?: string;
   readonly todos: ITodo[];
   readonly posts: IPost[];
 }
@@ -24,3 +24,23 @@ interface IUser {
 interface IExtendedUser extends IUser {
   readonly hasUncompleteTodos: boolean;
 }
+
+type UpdateTodoDto = { completed: boolean };
+type CreateTodoDto = { title: string };
+type CreateUserDto = { name: string; email: string };
+type TodoEventEmitterType = { id: number; completed: boolean };
+type CreatePostDto = { title: string; body?: string };
+
+interface ValidationArguments {
+  value: any;
+  constraints: any[];
+  targetName: string;
+  object: object;
+  property: string;
+}
+
+type BadRequestErrorType = {
+  statusCode: number;
+  message?: string | ((validationArguments: ValidationArguments) => string);
+  error: string;
+};
