@@ -1,0 +1,31 @@
+<div class="content-wrapper">
+  <aside class="sidebar">
+    <div class="search-container">
+      <input
+        type="text"
+        placeholder=""
+        class="search"
+        style="
+          font-size: 16px;
+          width: 100%;
+          font-weight: 500;
+          height: 44px;
+          border: none;
+        "
+        #txt
+      />
+    </div>
+
+    <app-user-block
+      *ngFor="let user of users; index as i"
+      [user]="user"
+      [idx]="i"
+      [isActive]="selected === i"
+      (onSelectUser)="onSelectedUser($event)"
+    ></app-user-block>
+  </aside>
+
+  <main class="content_area">dsds</main>
+</div>
+
+<router-outlet></router-outlet>

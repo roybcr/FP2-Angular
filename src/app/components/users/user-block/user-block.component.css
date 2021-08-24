@@ -1,0 +1,33 @@
+.card-container {
+  font-family: "Roboto", sans-serif;
+}
+
+.card {
+  flex-shrink: 0;
+  height: 180px;
+  width: 100%;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  border-bottom: 1px solid #e9e9e9;
+}
+
+.card-description {
+  text-align: left;
+  font-size: 14px;
+  padding-left: 12px;
+}
+
+.icon-button {
+  padding: 2px;
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+}
+
+.button-bar {
+  display: inline-flex;
+  padding: 4px;
+  align-items: center;
+  justify-content: flex-end;
+}

@@ -1,0 +1,61 @@
+:host {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+    Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+.content-wrapper {
+  display: flex;
+  height: 100%;
+}
+
+.search-container {
+  background-color: #fff;
+  position: sticky;
+  top: 0;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  z-index: 10;
+  border-bottom: 1px solid #e7e7e7;
+}
+
+input:focus {
+  outline: none;
+}
+
+.logotitle {
+  color: #1c1c1e;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  font-size: 0.96rem;
+  margin-left: -20px;
+}
+
+.sidebar {
+  width: 22%;
+  overflow-x: hidden;
+  background: #fff;
+  height: 100vh;
+  border-right: 1px solid #e9e9e9;
+  overflow-y: auto;
+}
+
+::-webkit-scrollbar {
+  background: transparent;
+  width: 0px;
+}
+::-webkit-scrollbar-thumb {
+  background: transparent;
+}
+
+.content_area {
+  flex: 1;
+  flex-direction: column;
+  padding: 40px;
+}
+
+.search {
+  background: url(/assets/search.svg) no-repeat scroll 12px 12px;
+  padding-left: 44px;
+  color: #cbd1db;
+}
